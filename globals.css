@@ -1,0 +1,190 @@
+/* UxVel global stylesheet.
+   Design-system tokens are inlined here so the cascade order is deterministic
+   and the build never depends on runtime CSS fetches. */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+/* --- design system: fonts --- */
+/* Poppins is the single brand typeface (Light, Regular, Medium, SemiBold, Bold), served from
+   Google Fonts. To self-host, drop .woff2 files in public/fonts/ and swap these for @font-face. */
+:root{--font-sans:'Poppins',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;--font-display:'Poppins',ui-sans-serif,system-ui,sans-serif;--font-mono:ui-monospace,'SFMono-Regular',Menlo,monospace}
+
+/* --- design system: colors --- */
+/* SAJ Consulting — colour system.
+   The five hexes below are declared verbatim on the brand board; every other value is a
+   harmonic derivation used for hovers, borders and tints. */
+:root{
+/* --- base: teal (primary brand) --- */
+--color-teal-50:#E9F8F8;--color-teal-100:#D0F1F1;--color-teal-200:#A3E3E4;--color-teal-300:#6FD3D4;--color-teal-400:#33C6C7;--color-teal-500:#00B8B9;--color-teal-600:#00A0A1;--color-teal-700:#008789;--color-teal-800:#036A6D;--color-teal-900:#08514F;
+/* --- base: cyan (bright accent) --- */
+--color-cyan-300:#7FEAEA;--color-cyan-400:#14D4D4;--color-cyan-500:#00C2C4;
+/* --- base: navy (headings, deep surfaces) --- */
+--color-navy-500:#2E6494;--color-navy-600:#1B5182;--color-navy-700:#134472;--color-navy-800:#0F3F6C;--color-navy-900:#0D3B66;--color-navy-950:#082744;
+/* --- base: slate (secondary text, UI grey) --- */
+--color-slate-200:#E2E8F0;--color-slate-300:#CBD5E1;--color-slate-400:#94A3B8;--color-slate-500:#64748B;--color-slate-600:#4D5B70;--color-slate-700:#3A4557;
+/* --- base: neutral + mist (tinted paper) --- */
+--color-white:#FFFFFF;--color-mist-50:#F3FAFA;--color-mist-100:#E6F4F5;--color-gray-50:#F7F9FB;--color-black:#0A1420;
+/* --- semantic: text --- */
+--text-heading:var(--color-navy-900);--text-heading-accent:var(--color-teal-600);--text-body:var(--color-slate-500);--text-body-strong:var(--color-slate-700);--text-muted:var(--color-slate-400);--text-eyebrow:var(--color-teal-600);--text-on-accent:var(--color-white);--text-on-dark:var(--color-white);--text-link:var(--color-teal-600);--text-link-hover:var(--color-teal-800);
+/* --- semantic: surfaces --- */
+--surface-page:var(--color-white);--surface-subtle:var(--color-mist-50);--surface-card:var(--color-white);--surface-card-tint:var(--color-mist-50);--surface-icon:var(--color-mist-100);--surface-inverse:var(--color-navy-900);--surface-inverse-alt:var(--color-navy-950);--surface-accent:var(--color-teal-500);
+/* --- semantic: borders --- */
+--border-subtle:var(--color-slate-200);--border-muted:var(--color-slate-300);--border-accent:var(--color-teal-500);--border-inverse:rgba(255,255,255,.18);
+/* --- semantic: interactive --- */
+--accent:var(--color-teal-500);--accent-hover:var(--color-teal-700);--accent-active:var(--color-teal-800);--accent-subtle:var(--color-teal-50);--accent-bright:var(--color-cyan-400);--focus-ring:rgba(20,212,212,.40);
+/* --- semantic: status (derived; not present on the brand board) --- */
+--status-success:#0E9F6E;--status-warning:#D9822B;--status-danger:#D14343;--status-info:var(--color-navy-500);
+/* --- gradients + washes (the brand's arc/graphic elements) --- */
+--gradient-brand:linear-gradient(135deg,var(--color-cyan-400) 0%,var(--color-teal-600) 100%);
+--gradient-brand-soft:linear-gradient(135deg,#B8EFEF 0%,var(--color-teal-400) 100%);
+--gradient-navy:linear-gradient(135deg,var(--color-navy-800) 0%,var(--color-navy-950) 100%);
+--gradient-page-wash:linear-gradient(180deg,var(--color-white) 0%,var(--color-mist-50) 100%);
+--gradient-protect:linear-gradient(90deg,rgba(255,255,255,.96) 0%,rgba(255,255,255,.75) 55%,rgba(255,255,255,0) 100%);
+--dot-grid-color:var(--color-teal-200)}
+
+/* --- design system: typography --- */
+/* SAJ Consulting — type scale. Poppins only; weight + letterspacing carry hierarchy. */
+:root{
+--weight-light:300;--weight-regular:400;--weight-medium:500;--weight-semibold:600;--weight-bold:700;
+--size-display-1:56px;--size-display-2:44px;--size-h1:40px;--size-h2:32px;--size-h3:24px;--size-h4:18px;--size-body-lg:18px;--size-body:16px;--size-body-sm:14px;--size-caption:12px;--size-eyebrow:13px;--size-nav:15px;--size-button:15px;
+--leading-tight:1.08;--leading-snug:1.2;--leading-heading:1.25;--leading-normal:1.5;--leading-body:1.65;--leading-loose:1.75;
+--tracking-tight:-0.02em;--tracking-heading:-0.01em;--tracking-normal:0;--tracking-wide:0.06em;--tracking-eyebrow:0.14em;--tracking-logotype:0.34em;
+/* composed roles */
+--type-display-1:var(--weight-semibold) var(--size-display-1)/var(--leading-tight) var(--font-display);
+--type-display-2:var(--weight-semibold) var(--size-display-2)/var(--leading-snug) var(--font-display);
+--type-h1:var(--weight-semibold) var(--size-h1)/var(--leading-heading) var(--font-display);
+--type-h2:var(--weight-semibold) var(--size-h2)/var(--leading-heading) var(--font-display);
+--type-h3:var(--weight-semibold) var(--size-h3)/var(--leading-snug) var(--font-sans);
+--type-h4:var(--weight-semibold) var(--size-h4)/var(--leading-snug) var(--font-sans);
+--type-body-lg:var(--weight-regular) var(--size-body-lg)/var(--leading-body) var(--font-sans);
+--type-body:var(--weight-regular) var(--size-body)/var(--leading-body) var(--font-sans);
+--type-body-sm:var(--weight-regular) var(--size-body-sm)/var(--leading-normal) var(--font-sans);
+--type-eyebrow:var(--weight-semibold) var(--size-eyebrow)/1.3 var(--font-sans);
+--type-nav:var(--weight-medium) var(--size-nav)/1 var(--font-sans);
+--type-button:var(--weight-medium) var(--size-button)/1 var(--font-sans)}
+
+/* --- design system: spacing --- */
+/* 4px base grid. Section rhythm is 96px desktop / 56px mobile. */
+:root{
+--space-0:0;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px;--space-6:24px;--space-7:28px;--space-8:32px;--space-10:40px;--space-12:48px;--space-14:56px;--space-16:64px;--space-20:80px;--space-24:96px;--space-32:128px;
+--gutter:24px;--gutter-mobile:20px;--container-max:1200px;--container-narrow:760px;--section-y:96px;--section-y-mobile:56px;
+--card-padding:24px;--card-gap:20px;--control-height:44px;--control-height-sm:36px;--control-height-lg:52px}
+
+/* --- design system: radius --- */
+/* Corners are gentle, never pill-shaped except toggles/chips. Brand arcs use one 100% corner. */
+:root{--radius-xs:3px;--radius-sm:4px;--radius-md:6px;--radius-lg:10px;--radius-xl:16px;--radius-2xl:24px;--radius-arc:0 0 0 100%;--radius-full:999px;
+--radius-button:var(--radius-md);--radius-input:var(--radius-md);--radius-card:var(--radius-lg);--radius-panel:var(--radius-xl);--radius-icon-tile:var(--radius-lg)}
+
+/* --- design system: elevation --- */
+/* Shadows are navy-tinted, wide and very low opacity — paper on paper, never glow.
+   Teal-tinted lift is reserved for hover on interactive cards. */
+:root{
+--shadow-xs:0 1px 2px rgba(13,59,102,.06);
+--shadow-sm:0 1px 3px rgba(13,59,102,.07),0 1px 2px rgba(13,59,102,.04);
+--shadow-md:0 4px 14px rgba(13,59,102,.08);
+--shadow-lg:0 12px 32px rgba(13,59,102,.10);
+--shadow-xl:0 24px 56px rgba(13,59,102,.12);
+--shadow-card:var(--shadow-sm);
+--shadow-card-hover:0 10px 26px rgba(0,184,185,.16);
+--shadow-button:0 1px 2px rgba(0,134,137,.24);
+--shadow-focus:0 0 0 3px var(--focus-ring);
+--shadow-inset-hairline:inset 0 0 0 1px var(--border-subtle);
+--blur-panel:saturate(140%) blur(14px);--overlay-scrim:rgba(8,39,68,.55)}
+
+/* --- design system: motion --- */
+/* Calm, short, opacity+2px-travel. No bounce, no spring, no scale-up-on-hover. */
+:root{--duration-instant:80ms;--duration-fast:120ms;--duration-base:200ms;--duration-slow:320ms;--duration-reveal:480ms;
+--ease-standard:cubic-bezier(.2,0,.2,1);--ease-out:cubic-bezier(0,0,.2,1);--ease-in-out:cubic-bezier(.4,0,.2,1);
+--transition-color:color var(--duration-fast) var(--ease-standard),background-color var(--duration-fast) var(--ease-standard),border-color var(--duration-fast) var(--ease-standard);
+--transition-lift:box-shadow var(--duration-base) var(--ease-standard),transform var(--duration-base) var(--ease-standard);
+--hover-travel:-2px;--press-scale:.985}
+
+/* --- design system: base --- */
+/* Element defaults so a bare page already reads as SAJ. */
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;font:var(--type-body);color:var(--text-body);background:var(--surface-page);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+h1,h2,h3,h4,h5,h6{margin:0;color:var(--text-heading);letter-spacing:var(--tracking-heading);text-wrap:balance}
+h1{font:var(--type-h1)}h2{font:var(--type-h2)}h3{font:var(--type-h3)}h4{font:var(--type-h4)}
+p{margin:0;text-wrap:pretty}
+a{color:var(--text-link);text-decoration:none;transition:var(--transition-color)}
+a:hover{color:var(--text-link-hover)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:none;box-shadow:var(--shadow-focus);border-radius:var(--radius-sm)}
+strong{font-weight:var(--weight-semibold);color:var(--text-body-strong)}
+img{max-width:100%;display:block}
+::selection{background:var(--color-teal-200);color:var(--color-navy-900)}
+
+/* --- page base + motion (ported from the design source) --- */
+html{scroll-behavior:smooth}
+[data-hero-pad]{padding:70px 32px 32px 32px}
+@media(max-width:900px){[data-hero-pad]{padding:90px 18px 32px 18px}}
+body{margin:0;background:var(--c-bg,#0E1413);color:var(--c-body,var(--c-body,rgba(255,255,255,.62)));font-family:var(--font-sans);-webkit-font-smoothing:antialiased}
+a{color:var(--c-accent,#6BD5C6);text-decoration:none}
+a:hover{color:var(--c-accent-hi,#9CE7DC)}
+h1,h2{font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-.004em}
+h1,h2,h3,h4{color:var(--c-h,#fff);margin:0}
+p{margin:0}
+@keyframes uxvMarquee{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+@keyframes uxvBlip{0%,100%{opacity:.25}50%{opacity:1}}
+@keyframes uxvSpin{to{transform:rotate(360deg)}}
+@keyframes uxvPing{0%{transform:scale(1);opacity:.9}70%{transform:scale(2.4);opacity:0}100%{transform:scale(2.4);opacity:0}}
+::selection{background:var(--c-accent,#6BD5C6);color:var(--c-on-accent,var(--c-bg2,#17211F))}
+
+/* ---------- responsive ---------- */
+img,video{max-width:100%}
+[id]{scroll-margin-top:96px}
+@media(max-width:1080px){
+[data-col="three"],[data-col="foot"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+[data-col="five"]{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+}
+@media(max-width:900px){
+[data-rail]{display:none!important}
+}
+@media(max-width:820px){
+html,body{overflow-x:clip}
+[data-col="idx"],[data-col="split"],[data-col="row"]{grid-template-columns:minmax(0,1fr)!important}
+[data-col="five"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+[data-vh]{height:auto!important;min-height:100svh!important}
+[data-menu]{overflow-y:auto!important;justify-content:flex-start!important}
+[data-engine]{margin:18px auto clamp(28px,6vh,54px)!important;max-width:min(68vw,300px)!important}
+[data-pin-wrap]{height:auto!important}
+[data-pin-sticky]{position:static!important;height:auto!important;overflow:visible!important;padding:clamp(46px,8vh,88px) 0!important}
+[data-pin-track]{transform:none!important;width:auto!important;overflow-x:auto!important;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:10px!important;scrollbar-width:none}
+[data-pin-track]::-webkit-scrollbar{display:none}
+[data-pin-track]>*{scroll-snap-align:center;flex:0 0 auto}
+[data-hpx]{transform:none!important}
+[data-stack-card]{position:relative!important;top:auto!important;transform:none!important;opacity:1!important}
+[data-col="three"]{grid-template-columns:minmax(0,1fr)!important}
+[data-slab]{grid-template-columns:minmax(0,1fr)!important;background:transparent!important;border:0!important;border-radius:0!important;gap:14px!important;overflow:visible!important}
+[data-slab]>*{border:1px solid var(--c-line2,rgba(255,255,255,.10))!important;border-radius:14px!important;min-height:0!important}
+[data-stack-card]{gap:16px!important}
+[data-stack-card]>*:first-child{order:2}
+[data-stack-card]>*:last-child{order:1}
+}
+@media(max-width:640px){
+[data-col="two"],[data-col="three"],[data-col="foot"],[data-col="fit"]{grid-template-columns:minmax(0,1fr)!important}
+}
+@media(max-width:430px){
+[data-theme-label]{display:none!important}
+[data-engine]{max-width:230px!important}
+}
+@media(hover:none){
+[data-uxv-cursor]{display:none!important}
+}
+
+/* --- hover states (were inline style-hover attributes) --- */
+.uxvh1:hover{border-color:var(--c-accent-br,var(--c-accent-br,rgba(107,213,198,.55))) !important}
+.uxvh2:hover{border-color:var(--c-accent-br,rgba(107,213,198,.55)) !important;background:var(--c-accent-wash,rgba(107,213,198,.12)) !important}
+.uxvh3:hover{color:var(--c-accent,#6BD5C6) !important;transform:translateX(18px) !important}
+.uxvh4:hover{background:var(--c-accent-hi,#9CE7DC) !important;box-shadow:0 14px 44px var(--c-accent-sh,rgba(107,213,198,.34)) !important}
+.uxvh5:hover{background:var(--c-bg2,#17211F) !important}
+.uxvh6:hover{color:var(--c-accent,#6BD5C6) !important;gap:18px !important}
+.uxvh7:hover{background:var(--c-inv-chip,#E3F8F6) !important;border-color:var(--c-inv-ac3,#2FAF97) !important}
+.uxvh8:hover{background:#9CE7DC !important;box-shadow:0 16px 48px rgba(107,213,198,.36) !important}
+.uxvh9:hover{border-color:rgba(107,213,198,.6) !important;background:rgba(107,213,198,.08) !important}
+.uxvh10:hover{box-shadow:0 14px 44px var(--c-accent-sh,rgba(107,213,198,.34)) !important}
+
+/* --- Services keeps its pinned cards stacked on phones --- */
+@media(max-width:820px){
+[data-pinmode="stack"] [data-pin-track]{flex-direction:column!important;gap:14px!important;overflow:visible!important;scroll-snap-type:none}
+[data-pinmode="stack"] [data-pin-track]>*{width:auto!important;min-height:0!important}
+}
