@@ -1,20 +1,10 @@
-/* UxVel global stylesheet.
-   Design-system tokens are inlined here so the cascade order is deterministic
-   and the build never depends on runtime CSS fetches. */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;
-@import for local @font-face rules if self-hosting. */
-:root{--font-sans:'Poppins',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
-@import url('https://db.onlinewebfonts.com/c/e66905e07608167a84e6ad52f638c3c6?family=Helvetica+Now+Var');
+﻿/* UxVel global stylesheet. */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Outfit:wght@300;400;500;600;700&display=swap');
 
-/* --- design system: fonts --- */
-0,400;0,500;0,600;0,700;1,400&display=swap');
-/* Poppins is the single brand typeface (per brand board: Light, Regular, Medium, SemiBold, Bold).
-   Served from Google Fonts — no licensed binaries were supplied with the source material.
-   Drop .woff2 files into assets/fonts/ and swap this --font-display:'Poppins',ui-sans-serif,system-ui,sans-serif;--font-mono:ui-monospace,'SFMono-Regular',Menlo,monospace}
-
+:root{--font-sans:'Poppins',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;--font-display:'Poppins',ui-sans-serif,system-ui,sans-serif;--font-mono:ui-monospace,'SFMono-Regular',Menlo,monospace}
 /* --- design system: colors --- */
-/* SAJ Consulting — colour system.
+/* SAJ Consulting â€” colour system.
    The five hexes below are declared verbatim on the brand board; every other value is a
    harmonic derivation used for hovers, borders and tints. */
 :root{
@@ -47,7 +37,7 @@
 --dot-grid-color:var(--color-teal-200)}
 
 /* --- design system: typography --- */
-/* SAJ Consulting — type scale. Poppins only; weight + letterspacing carry hierarchy. */
+/* SAJ Consulting â€” type scale. Poppins only; weight + letterspacing carry hierarchy. */
 :root{
 --weight-light:300;--weight-regular:400;--weight-medium:500;--weight-semibold:600;--weight-bold:700;
 --size-display-1:56px;--size-display-2:44px;--size-h1:40px;--size-h2:32px;--size-h3:24px;--size-h4:18px;--size-body-lg:18px;--size-body:16px;--size-body-sm:14px;--size-caption:12px;--size-eyebrow:13px;--size-nav:15px;--size-button:15px;
@@ -80,7 +70,7 @@
 --radius-button:var(--radius-md);--radius-input:var(--radius-md);--radius-card:var(--radius-lg);--radius-panel:var(--radius-xl);--radius-icon-tile:var(--radius-lg)}
 
 /* --- design system: elevation --- */
-/* Shadows are navy-tinted, wide and very low opacity — paper on paper, never glow.
+/* Shadows are navy-tinted, wide and very low opacity â€” paper on paper, never glow.
    Teal-tinted lift is reserved for hover on interactive cards. */
 :root{
 --shadow-xs:0 1px 2px rgba(13,59,102,.06);
@@ -192,3 +182,4 @@ html,body{overflow-x:clip}
 [data-pinmode="stack"] [data-pin-track]{flex-direction:column!important;gap:14px!important;overflow:visible!important;scroll-snap-type:none}
 [data-pinmode="stack"] [data-pin-track]>*{width:auto!important;min-height:0!important}
 }
+
