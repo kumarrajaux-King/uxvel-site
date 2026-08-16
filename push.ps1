@@ -1,27 +1,30 @@
 # push.ps1 — the everyday one-liner: commit everything and deploy.
-# Usage:  .\push.ps1 "Update work page intro"
-#         .\push.ps1                 (uses a timestamp as the message)
+# Usage:  powershell -ExecutionPolicy Bypass -File .\push.ps1 "Update work page intro"
 
 param([string]$m = "")
 
-$ErrorActionPreference = 'Stop'
 Set-Location $PSScriptRoot
+$ErrorActionPreference = 'Continue'
 
 if (-not $m) { $m = "Update " + (Get-Date -Format 'yyyy-MM-dd HH:mm') }
 
-Write-Host "`nPulling latest..." -ForegroundColor Cyan
-git pull --rebase 2>$null
+git pull --rebase 2>&1 | Out-Null
 
 git add -A
-if (git diff --cached --quiet) {
-  Write-Host "No changes to push - already up to date." -ForegroundColor Yellow
+$staged = git diff --cached --name-only
+if (-not $staged) {
+  Write-Host "`nNo changes to push - already up to date.`n" -ForegroundColor Yellow
   exit 0
 }
 
-git status --short
-git commit -m $m | Out-Null
+Write-Host "`nChanged:" -ForegroundColor Cyan
+$staged | ForEach-Object { Write-Host "  $_" -ForegroundColor DarkGray }
+
+git commit -m $m 2>&1 | Out-Null
 Write-Host "Committed: $m" -ForegroundColor Green
 
 git push
-Write-Host "`nPushed. GitHub Actions is building now - live in about two minutes." -ForegroundColor Green
-Write-Host "Watch it: https://github.com/kumarrajaux-King/uxvel-site/actions`n" -ForegroundColor DarkGray
+if ($LASTEXITCODE -ne 0) { Write-Host "`nPush failed - see the message above.`n" -ForegroundColor Red; exit 1 }
+
+Write-Host "`nPushed. GitHub Actions is building - live in about two minutes." -ForegroundColor Green
+Write-Host "Watch: https://github.com/kumarrajaux-King/uxvel-site/actions`n" -ForegroundColor DarkGray
