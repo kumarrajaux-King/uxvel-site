@@ -1,23 +1,29 @@
-﻿/* UxVel global stylesheet. */
+/* UxVel global stylesheet.
+   Design-system tokens are inlined here so the cascade order is deterministic
+   and the build never depends on runtime CSS fetches. */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Outfit:wght@300;400;500;600;700&display=swap');
 
+/* --- design system: fonts --- */
+/* Poppins is the single brand typeface (Light, Regular, Medium, SemiBold, Bold), served from
+   Google Fonts. To self-host, drop .woff2 files in public/fonts/ and swap these for @font-face. */
 :root{--font-sans:'Poppins',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;--font-display:'Poppins',ui-sans-serif,system-ui,sans-serif;--font-mono:ui-monospace,'SFMono-Regular',Menlo,monospace}
+
 /* --- design system: colors --- */
-/* SAJ Consulting â€” colour system.
+/* SAJ Consulting — colour system.
    The five hexes below are declared verbatim on the brand board; every other value is a
    harmonic derivation used for hovers, borders and tints. */
 :root{
 /* --- base: teal (primary brand) --- */
---color-teal-50:#E9F8F8;--color-teal-100:#D0F1F1;--color-teal-200:#A3E3E4;--color-teal-300:#6FD3D4;--color-teal-400:#33C6C7;--color-teal-500:#00B8B9;--color-teal-600:#00A0A1;--color-teal-700:#008789;--color-teal-800:#036A6D;--color-teal-900:#08514F;
+--color-teal-50:#EAF3FE;--color-teal-100:#D3E6FC;--color-teal-200:#AFD4FA;--color-teal-300:#7FBCF8;--color-teal-400:#4DA6FF;--color-teal-500:#1B6FD6;--color-teal-600:#1559B8;--color-teal-700:#124A9C;--color-teal-800:#0E3C80;--color-teal-900:#0B2E63;
 /* --- base: cyan (bright accent) --- */
---color-cyan-300:#7FEAEA;--color-cyan-400:#14D4D4;--color-cyan-500:#00C2C4;
+--color-cyan-300:#7FD8FF;--color-cyan-400:#4DC7FF;--color-cyan-500:#2EA8F5;
 /* --- base: navy (headings, deep surfaces) --- */
 --color-navy-500:#2E6494;--color-navy-600:#1B5182;--color-navy-700:#134472;--color-navy-800:#0F3F6C;--color-navy-900:#0D3B66;--color-navy-950:#082744;
 /* --- base: slate (secondary text, UI grey) --- */
 --color-slate-200:#E2E8F0;--color-slate-300:#CBD5E1;--color-slate-400:#94A3B8;--color-slate-500:#64748B;--color-slate-600:#4D5B70;--color-slate-700:#3A4557;
 /* --- base: neutral + mist (tinted paper) --- */
---color-white:#FFFFFF;--color-mist-50:#F3FAFA;--color-mist-100:#E6F4F5;--color-gray-50:#F7F9FB;--color-black:#0A1420;
+--color-white:#FFFFFF;--color-mist-50:#F4FAFE;--color-mist-100:#E6F4F5;--color-gray-50:#F7F9FB;--color-black:#0A1420;
 /* --- semantic: text --- */
 --text-heading:var(--color-navy-900);--text-heading-accent:var(--color-teal-600);--text-body:var(--color-slate-500);--text-body-strong:var(--color-slate-700);--text-muted:var(--color-slate-400);--text-eyebrow:var(--color-teal-600);--text-on-accent:var(--color-white);--text-on-dark:var(--color-white);--text-link:var(--color-teal-600);--text-link-hover:var(--color-teal-800);
 /* --- semantic: surfaces --- */
@@ -37,7 +43,7 @@
 --dot-grid-color:var(--color-teal-200)}
 
 /* --- design system: typography --- */
-/* SAJ Consulting â€” type scale. Poppins only; weight + letterspacing carry hierarchy. */
+/* SAJ Consulting — type scale. Poppins only; weight + letterspacing carry hierarchy. */
 :root{
 --weight-light:300;--weight-regular:400;--weight-medium:500;--weight-semibold:600;--weight-bold:700;
 --size-display-1:56px;--size-display-2:44px;--size-h1:40px;--size-h2:32px;--size-h3:24px;--size-h4:18px;--size-body-lg:18px;--size-body:16px;--size-body-sm:14px;--size-caption:12px;--size-eyebrow:13px;--size-nav:15px;--size-button:15px;
@@ -70,7 +76,7 @@
 --radius-button:var(--radius-md);--radius-input:var(--radius-md);--radius-card:var(--radius-lg);--radius-panel:var(--radius-xl);--radius-icon-tile:var(--radius-lg)}
 
 /* --- design system: elevation --- */
-/* Shadows are navy-tinted, wide and very low opacity â€” paper on paper, never glow.
+/* Shadows are navy-tinted, wide and very low opacity — paper on paper, never glow.
    Teal-tinted lift is reserved for hover on interactive cards. */
 :root{
 --shadow-xs:0 1px 2px rgba(13,59,102,.06);
@@ -111,9 +117,9 @@ img{max-width:100%;display:block}
 html{scroll-behavior:smooth}
 [data-hero-pad]{padding:70px 32px 32px 32px}
 @media(max-width:900px){[data-hero-pad]{padding:90px 18px 32px 18px}}
-body{margin:0;background:var(--c-bg,#0E1413);color:var(--c-body,var(--c-body,rgba(255,255,255,.62)));font-family:var(--font-sans);-webkit-font-smoothing:antialiased}
-a{color:var(--c-accent,#6BD5C6);text-decoration:none}
-a:hover{color:var(--c-accent-hi,#9CE7DC)}
+body{margin:0;background:var(--c-bg,#0B1220);color:var(--c-body,var(--c-body,rgba(255,255,255,.62)));font-family:var(--font-sans);-webkit-font-smoothing:antialiased}
+a{color:var(--c-accent,#4DA6FF);text-decoration:none}
+a:hover{color:var(--c-accent-hi,#9ED3FF)}
 h1,h2{font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-.004em}
 h1,h2,h3,h4{color:var(--c-h,#fff);margin:0}
 p{margin:0}
@@ -121,7 +127,7 @@ p{margin:0}
 @keyframes uxvBlip{0%,100%{opacity:.25}50%{opacity:1}}
 @keyframes uxvSpin{to{transform:rotate(360deg)}}
 @keyframes uxvPing{0%{transform:scale(1);opacity:.9}70%{transform:scale(2.4);opacity:0}100%{transform:scale(2.4);opacity:0}}
-::selection{background:var(--c-accent,#6BD5C6);color:var(--c-on-accent,var(--c-bg2,#17211F))}
+::selection{background:var(--c-accent,#4DA6FF);color:var(--c-on-accent,var(--c-bg2,#121C2B))}
 
 /* ---------- responsive ---------- */
 img,video{max-width:100%}
@@ -166,20 +172,19 @@ html,body{overflow-x:clip}
 }
 
 /* --- hover states (were inline style-hover attributes) --- */
-.uxvh1:hover{border-color:var(--c-accent-br,var(--c-accent-br,rgba(107,213,198,.55))) !important}
-.uxvh2:hover{border-color:var(--c-accent-br,rgba(107,213,198,.55)) !important;background:var(--c-accent-wash,rgba(107,213,198,.12)) !important}
-.uxvh3:hover{color:var(--c-accent,#6BD5C6) !important;transform:translateX(18px) !important}
-.uxvh4:hover{background:var(--c-accent-hi,#9CE7DC) !important;box-shadow:0 14px 44px var(--c-accent-sh,rgba(107,213,198,.34)) !important}
-.uxvh5:hover{background:var(--c-bg2,#17211F) !important}
-.uxvh6:hover{color:var(--c-accent,#6BD5C6) !important;gap:18px !important}
-.uxvh7:hover{background:var(--c-inv-chip,#E3F8F6) !important;border-color:var(--c-inv-ac3,#2FAF97) !important}
-.uxvh8:hover{background:#9CE7DC !important;box-shadow:0 16px 48px rgba(107,213,198,.36) !important}
-.uxvh9:hover{border-color:rgba(107,213,198,.6) !important;background:rgba(107,213,198,.08) !important}
-.uxvh10:hover{box-shadow:0 14px 44px var(--c-accent-sh,rgba(107,213,198,.34)) !important}
+.uxvh1:hover{border-color:var(--c-accent-br,var(--c-accent-br,rgba(77,166,255,.55))) !important}
+.uxvh2:hover{border-color:var(--c-accent-br,rgba(77,166,255,.55)) !important;background:var(--c-accent-wash,rgba(77,166,255,.12)) !important}
+.uxvh3:hover{color:var(--c-accent,#4DA6FF) !important;transform:translateX(18px) !important}
+.uxvh4:hover{background:var(--c-accent-hi,#9ED3FF) !important;box-shadow:0 14px 44px var(--c-accent-sh,rgba(77,166,255,.34)) !important}
+.uxvh5:hover{background:var(--c-bg2,#121C2B) !important}
+.uxvh6:hover{color:var(--c-accent,#4DA6FF) !important;gap:18px !important}
+.uxvh7:hover{background:var(--c-inv-chip,#E4F2FC) !important;border-color:var(--c-inv-ac3,#2E7DF7) !important}
+.uxvh8:hover{background:#9ED3FF !important;box-shadow:0 16px 48px rgba(77,166,255,.36) !important}
+.uxvh9:hover{border-color:rgba(77,166,255,.6) !important;background:rgba(77,166,255,.08) !important}
+.uxvh10:hover{box-shadow:0 14px 44px var(--c-accent-sh,rgba(77,166,255,.34)) !important}
 
 /* --- Services keeps its pinned cards stacked on phones --- */
 @media(max-width:820px){
 [data-pinmode="stack"] [data-pin-track]{flex-direction:column!important;gap:14px!important;overflow:visible!important;scroll-snap-type:none}
 [data-pinmode="stack"] [data-pin-track]>*{width:auto!important;min-height:0!important}
 }
-
